@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "models": {
+    "anthropic": {},
+    "openai": {},
+    "gemini": {},
+    "custom": {}
+  },
+  "defaults": {
+    "custom": { "input": 0, "output": 0, "source": "assumed free (self-hosted)", "verified_at": null }
+  }
+}

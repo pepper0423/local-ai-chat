@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "highlight.js/styles/github-dark.css";
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #0a0a0c;
+  color: #e6e6e6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tailwind Typography's default scale is tuned for long-form articles — headings in
+   particular render much larger than chat body text. These plain (non-:where()) selectors
+   beat the plugin's own :where()-wrapped rules regardless of CSS source order, and keep
+   every element in an assistant reply on one consistent, chat-appropriate scale. */
+.chat-markdown {
+  font-size: 15px;
+}
+.chat-markdown :is(p, li, blockquote) {
+  font-size: 15px;
+  line-height: 1.65;
+}
+.chat-markdown :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+  line-height: 1.4;
+}
+.chat-markdown h1 {
+  font-size: 1.2em;
+}
+.chat-markdown h2 {
+  font-size: 1.1em;
+}
+.chat-markdown :is(ul, ol) {
+  font-size: 15px;
+}
+/* Inline `code` snippets stay small against body text, but a fenced ```code block```
+   is read line-by-line like its own text block — 0.85em there was too small to read. */
+.chat-markdown :not(pre) > code {
+  font-size: 0.85em;
+}
+.chat-markdown pre code {
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: rgba(37, 99, 235, 0.4);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2a2e37;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3a3f4b;
+}
